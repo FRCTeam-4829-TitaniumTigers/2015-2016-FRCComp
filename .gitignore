@@ -40,5 +40,7 @@ Thumbs.db
 ######################
 .metadata/.plugins/*
 .recommenders/*
+.metadata/*
+*/.plugins/*
 
 *.prefs
