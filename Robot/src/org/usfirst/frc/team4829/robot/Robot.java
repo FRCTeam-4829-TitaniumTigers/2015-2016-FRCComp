@@ -2,7 +2,7 @@
 package org.usfirst.frc.team4829.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
+//import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CANTalon;
@@ -23,9 +23,9 @@ public class Robot extends IterativeRobot {
     SendableChooser chooser;
     
     //My Variables
-    CANTalon rightFront, leftFront, rightBack, leftBack;
-    RobotDrive driveTrain;
-    Joystick moveStick;
+    private CANTalon rightFront, leftFront, rightBack, leftBack;
+    private RobotDrive driveTrain;
+    private Joystick moveStick;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -38,20 +38,20 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto choices", chooser);
         
         //Custom Variable initialization. 
-        rightFront = new CANTalon(0);
-        leftFront = new CANTalon(1);
-        rightBack = new CANTalon(2);
-        leftBack = new CANTalon(3);
+        rightFront = new CANTalon(RobotMap.rightFrontMotor);
+        leftFront = new CANTalon(RobotMap.leftFrontMotor);
+        rightBack = new CANTalon(RobotMap.rightBackMotor);
+        leftBack = new CANTalon(RobotMap.leftBackMotor);
         
         driveTrain = new RobotDrive(rightFront, leftFront, rightBack, leftBack);
-        moveStick = new Joystick(0);
+        moveStick = new Joystick(RobotMap.driveJoystrickUSB);
     }
     
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
 	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
 	 * Dashboard, remove all of the chooser code and uncomment the getString line to get the auto name from the text box
-	 * below the Gyro
+	 * below the gyroscope.
 	 *
 	 * You can add additional auto modes by adding additional comparisons to the switch structure below with additional strings.
 	 * If using the SendableChooser make sure to add them to the chooser code above as well.
@@ -64,6 +64,7 @@ public class Robot extends IterativeRobot {
 
     /**
      * This function is called periodically during autonomous
+     * Called every 20 milliseconds
      */
     public void autonomousPeriodic() {
     	switch(autoSelected) {
@@ -83,7 +84,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        driveTrain.arcadeDrive(moveStick);
+        
     }
     
     /**
