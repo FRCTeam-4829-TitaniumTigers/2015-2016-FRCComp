@@ -7,10 +7,10 @@ public class RobotMap {
 	 */
 	
 	//CANTalon CAN ports
-	public static final int rightFrontMotor = 2,
-							leftFrontMotor = 3,
+	public static final int rightFrontMotor = 0,
+							leftFrontMotor = 2,
 							rightBackMotor = 1,
-							leftBackMotor = 0;
+							leftBackMotor = 3;
 	
 	//Joystick USB ports
 	public static final int driveJoystrickUSB = 0;

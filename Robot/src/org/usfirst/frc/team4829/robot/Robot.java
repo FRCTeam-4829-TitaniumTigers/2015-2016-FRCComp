@@ -43,9 +43,12 @@ public class Robot extends IterativeRobot {
         leftFront = new CANTalon(RobotMap.leftFrontMotor);
         rightBack = new CANTalon(RobotMap.rightBackMotor);
         leftBack = new CANTalon(RobotMap.leftBackMotor);
-        
-        inputOutput = new IO(moveStick);
-        
+        try {
+        	inputOutput = new IO(moveStick);
+        }catch(Exception e){
+        	System.out.println(e);
+        };
+        	
         driveTrain = new RobotDrive(rightFront, leftFront, rightBack, leftBack);
         moveStick = new Joystick(RobotMap.driveJoystrickUSB);
     }
@@ -88,6 +91,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         driveTrain.arcadeDrive(moveStick);
+        
     }
     
     /**
