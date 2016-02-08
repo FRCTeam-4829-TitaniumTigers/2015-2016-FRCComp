@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
     private CANTalon rightFront, leftFront, rightBack, leftBack;
     private RobotDrive driveTrain;
     private Joystick moveStick;
+    private IO inputOutput;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -42,6 +43,8 @@ public class Robot extends IterativeRobot {
         leftFront = new CANTalon(RobotMap.leftFrontMotor);
         rightBack = new CANTalon(RobotMap.rightBackMotor);
         leftBack = new CANTalon(RobotMap.leftBackMotor);
+        
+        inputOutput = new IO(moveStick);
         
         driveTrain = new RobotDrive(rightFront, leftFront, rightBack, leftBack);
         moveStick = new Joystick(RobotMap.driveJoystrickUSB);
